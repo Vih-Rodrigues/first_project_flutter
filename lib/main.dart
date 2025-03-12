@@ -23,31 +23,13 @@ class MyApp extends StatelessWidget {
           ),
           backgroundColor: Colors.blue,
         ),
-        body: Container(
-          child: Stack(
-            children: [
-              Container(
-                color: Colors.blue,
-                height: 140,
-              ),
-              Container(
-                color: Colors.white,
-                height: 100,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      color: Colors.black26,
-                      width: 72,
-                      height: 100,
-                    ),
-                    Text('Learn Flutter'),
-                    ElevatedButton(onPressed: (){}, child: Icon(Icons.arrow_drop_up))
-                  ],
-                ),
-              ),
-            ],
-          ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Task('Learn Flutter'),
+            Task('Learn how to ride a bike'),
+            Task('Meditate'),
+          ],
         ),
         floatingActionButton: FloatingActionButton(onPressed: (){}),
       ),
@@ -55,4 +37,38 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class Task extends StatelessWidget {
+  final String name;
+  const Task(this.name,{super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Stack(
+        children: [
+          Container(
+            color: Colors.blue,
+            height: 140,
+          ),
+          Container(
+            color: Colors.white,
+            height: 100,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  color: Colors.black26,
+                  width: 72,
+                  height: 100,
+                ),
+                Text(name),
+                ElevatedButton(onPressed: (){}, child: Icon(Icons.arrow_drop_up))
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
